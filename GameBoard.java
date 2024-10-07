@@ -48,19 +48,5 @@ public void printBoard(){
 
 }
 
-/*int[][] array = {
-        {1, 2, 3},
-        {4, 5, 6},
-        {7, 8, 9}
-};
 
-for (int i = 0; i < array.length; i++) {
-    // Iterera över varje rad
-int[] row = array[i];
-    for (int j = 0; j < row.length; j++) {
-        // Iterera över varje element i raden
-        System.out.print(row[j] + " ");
-    }
-            System.out.println(); // Ny rad efter varje rad i arrayen
-}*/
 
