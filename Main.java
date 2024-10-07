@@ -17,8 +17,17 @@ public class Main {
             }
 
 
+        g1.markersArray[1][0] = 'X';
+        g1.markersArray[1][1] = '0';
+        g1.markersArray[1][2] = 'X';
         gameBoard.printBoard();
-        gameBoard.print();
+
+        System.out.println(g1.checkValidMove(1,1));
+
+
+                boolean temp = g1.gameBoard.checkWinningPatterns("XXX");
+
+                System.out.println(temp);
 
     }
 }

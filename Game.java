@@ -31,7 +31,16 @@ public class Game {
             return false;
     }
 
+    /**
+     * Reset and clears the array holding markers position
+     */
+    public void clearMarkers(){
+        for(int i = 0; i < markersArray.length; i++)
+            for(int j = 0; j < markersArray.length; j++) {
+                markersArray[i][j] = ' ';
+            }
 
+    }
 
 
 }
