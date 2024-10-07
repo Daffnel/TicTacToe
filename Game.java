@@ -8,6 +8,11 @@ public class Game {
 
     char[][] markersArray = new char[3][3];
 
+    /** Constructor  for the game, player1 starts by default with X as marker
+     *
+     * @param player1   name of player no 1
+     * @param player2   name of player no 2
+     */
     public Game(String player1, String player2){
         //this.gameBoard = new GameBoard(markersArray);
         this.gameBoard = new GameBoard(markersArray);
@@ -39,8 +44,30 @@ public class Game {
             for(int j = 0; j < markersArray.length; j++) {
                 markersArray[i][j] = ' ';
             }
-
     }
 
+    /**
+     *  Converts user input for square coordinates into number for row and column
+     *  separates one digit and one number
+     *
+      * @param input user input a1, b3, 3c etc.
+     * @return array [0] = rows  [1] = column
+     */
 
+    public int[] convertRowAndColumn(String  input){
+        String str;
+        str = input.trim();
+        str = str.toLowerCase();
+
+        if(str.length()>2)
+            System.out.println("För många tecken");
+
+
+
+
+        int i = 0;
+        int[] para = new int[2];
+
+        return para;
+    }
 }

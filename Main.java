@@ -17,15 +17,15 @@ public class Main {
             }
 
 
-        g1.markersArray[1][0] = 'X';
-        g1.markersArray[1][1] = '0';
-        g1.markersArray[1][2] = 'X';
+        g1.markersArray[0][0] = 'X';
+        g1.markersArray[1][1] = 'X';
+        g1.markersArray[2][2] = 'X';
         gameBoard.printBoard();
 
-        System.out.println(g1.checkValidMove(1,1));
+       // System.out.println(g1.checkValidMove(1,1));
 
 
-                boolean temp = g1.gameBoard.checkWinningPatterns("XXX");
+                boolean temp = g1.gameBoard.checkWinningPatterns();
 
                 System.out.println(temp);
 
