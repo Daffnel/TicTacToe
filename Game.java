@@ -71,14 +71,19 @@ public class Game {
 
     }
 
-    public void makeAmove(Player plauer,int row, int column){
+    public boolean makeAmove(Player player,int row, int col){
+
+        //make sure row and col is in limits
 
 
 
+        if(checkValidMove(row,col)) {
+            markersArray[row][col] = player.getMarker();
+            return true;
+        }
+        else
 
-
-
-
+            return false;
     }
 
 

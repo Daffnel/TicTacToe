@@ -19,9 +19,11 @@ public class Main {
 
         for(int i = 0; i < game1.markersArray.length; i++)
             for(int j = 0; j < game1.markersArray.length;j++) {
-                game1.markersArray[i][j] = (char) a;
+                game1.markersArray[i][j] = ' ';   //(char) a;
                 a++;
             }
+
+        game1.makeAmove(game1.player1,0,1);
         game1.gameBoard.printBoard();
 
     }
