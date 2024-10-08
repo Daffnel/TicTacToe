@@ -1,7 +1,10 @@
+import java.util.Scanner;
+
 public class Player extends Game {
 
     private String name;
-    char marker;
+    private char marker;
+    private  boolean startingPlayer = false;
 
     public Player(String name, char marker){
         super();
@@ -9,8 +12,13 @@ public class Player extends Game {
         marker = this.marker;
     }
 
+
     public String getName() {
         return name;
+    }
+
+    public void setStartingPlayer(boolean startingPlayer) {
+        this.startingPlayer = startingPlayer;
     }
 
     public void setName(String name) {

@@ -2,9 +2,11 @@ public class Main {
     public static void main(String[] args) {
 
 
-        Game g1 = new Game("janne", "Peter");
+    //Game spel1 = new Game("Peter", "Åke");
 
-        GameBoard gameBoard = g1.gameBoard;
+        Game.StartNewGame();
+
+    /*    GameBoard gameBoard = g1.gameBoard;
 
 
         //Just for test purpose fill the array A to I
@@ -27,7 +29,7 @@ public class Main {
 
                 boolean temp = g1.gameBoard.checkWinningPatterns();
 
-                System.out.println(temp);
+                System.out.println(temp);*/
 
     }
 }

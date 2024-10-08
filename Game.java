@@ -1,8 +1,11 @@
+import java.util.Random;
+import java.util.Scanner;
+
 public class Game {
 
     GameBoard gameBoard;
-    private Player  player1;
-    private Player player2;
+    Player player1;
+    Player Player2;
 
     public Game() {}
 
@@ -10,14 +13,14 @@ public class Game {
 
     /** Constructor  for the game, player1 starts by default with X as marker
      *
-     * @param player1   name of player no 1
-     * @param player2   name of player no 2
+     * @param pl1   name of player no 1
+     * @param pl2   name of player no 2
      */
-    public Game(String player1, String player2){
+    public Game(String pl1, String pl2){
         //this.gameBoard = new GameBoard(markersArray);
-        this.gameBoard = new GameBoard(markersArray);
-        this.player1 = new Player(player1,'X');             //player1 default marker 'X'
-        this.player2 = new Player(player2,'O');
+       this.gameBoard = new GameBoard(markersArray);
+        //Player player1 = new Player(pl1, 'X');             //player1 default marker 'X'
+        //Player player2 = new Player(pl2, 'O');
     }
 
 
@@ -46,28 +49,16 @@ public class Game {
             }
     }
 
-    /**
-     *  Converts user input for square coordinates into number for row and column
-     *  separates one digit and one number
-     *
-      * @param input user input a1, b3, 3c etc.
-     * @return array [0] = rows  [1] = column
-     */
 
-    public int[] convertRowAndColumn(String  input){
-        String str;
-        str = input.trim();
-        str = str.toLowerCase();
+    public static void StartNewGame(){
 
-        if(str.length()>2)
-            System.out.println("För många tecken");
+        Scanner sc = new Scanner(System.in);
+        Random rand = new Random();
 
 
 
 
-        int i = 0;
-        int[] para = new int[2];
 
-        return para;
+
     }
 }
