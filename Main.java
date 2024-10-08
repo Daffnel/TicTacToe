@@ -1,35 +1,28 @@
 public class Main {
     public static void main(String[] args) {
 
-
-    //Game spel1 = new Game("Peter", "Åke");
-
-        Game.StartNewGame();
-
-    /*    GameBoard gameBoard = g1.gameBoard;
+        //Här vill jag Skapa objekten game, player och board för att gör det enkelt
 
 
-        //Just for test purpose fill the array A to I
-        int ch = 65;
+        //Player pl1 = new Player("janne",'X');
+       // Player pl2 = new Player("Hasse",'P');
 
-        for (int i = 0; i < g1.markersArray.length; i++)
-            for (int j = 0; j < g1.markersArray.length; j++) {
-                g1.markersArray[i][j] = (char) ch;
-                ch++;
+        Game game1 = new Game("hasse","Ludde");
+
+        game1.setFirstPlayer();
+
+
+
+        //for testing purpose fill the array a to i
+
+        int a = 97;
+
+        for(int i = 0; i < game1.markersArray.length; i++)
+            for(int j = 0; j < game1.markersArray.length;j++) {
+                game1.markersArray[i][j] = (char) a;
+                a++;
             }
-
-
-        g1.markersArray[0][0] = 'X';
-        g1.markersArray[1][1] = 'X';
-        g1.markersArray[2][2] = 'X';
-        gameBoard.printBoard();
-
-       // System.out.println(g1.checkValidMove(1,1));
-
-
-                boolean temp = g1.gameBoard.checkWinningPatterns();
-
-                System.out.println(temp);*/
+        game1.gameBoard.printBoard();
 
     }
 }

@@ -7,9 +7,8 @@ public class Player extends Game {
     private  boolean startingPlayer = false;
 
     public Player(String name, char marker){
-        super();
-        name = this.name;
-        marker = this.marker;
+        this.name = name;
+        this.marker = marker;
     }
 
 
