@@ -4,7 +4,8 @@ public class GameBoard extends Game{
 
 private char[][] markers = new char[3][3];
 private int noInRow = 3;                                                //Simpel version "tre i rad"
-public GameBoard(char[][] markers){
+
+    public GameBoard(char[][] markers){
     super();
     this.markers = markers;
 }
@@ -20,7 +21,7 @@ public GameBoard(char[][] markers){
     System.out.println("    ---+---+---");
     System.out.println("3   " + markers[2][0] + "  | " + markers[2][1] + " | " + markers[2][2]);
     System.out.println("    -----------");
-    System.out.println("     a   b   c");
+    System.out.println("     1   2   3");
 }
 
 
@@ -29,7 +30,7 @@ public GameBoard(char[][] markers){
      * @return true if there is 3 in a row
      */
     public boolean checkWinningPatterns(){
-//for a board 3 X 3 there is 8 possible winning patterns quick and easy, IF statements!!
+//for a board 3 X 3 there is 8 possible winning patterns
     if(markers[0][0] == markers[0][1] && markers[0][1] == markers[0][2])
         return true;
     else if(markers[1][0] == markers[1][1] && markers[1][1] == markers[1][2])
@@ -50,6 +51,15 @@ public GameBoard(char[][] markers){
     return false;
 
     }
+
+    /**
+     * simple and easy routine to clear the terminal window
+     */
+    public void clearScreen(){
+        for(int i = 0 ; i < 80; i++)
+            System.out.println();
+    }
+
 
     }
 

@@ -54,7 +54,7 @@ public class Game {
     /**
      * make a random selection of which player will start
      */
-    public void  setFirstPlayer() {//(Player pl1, Player pl2){
+    public void  setFirstPlayer() {         //(Player pl1, Player pl2){
 
         Random rand = new Random();
 
@@ -75,15 +75,19 @@ public class Game {
 
         //make sure row and col is in limits
 
-
+            if ((row > markersArray.length || row < 1) || (col < 0 || col > markersArray[0].length)) {   // [0] for column
+                System.out.println("fel värde på rad eller kolumn, försök igen");
+                return false;
+            }
 
         if(checkValidMove(row,col)) {
             markersArray[row][col] = player.getMarker();
             return true;
         }
-        else
-
+        else {
+             System.out.println("Rutan upptagen" );
             return false;
+        }
     }
 
 

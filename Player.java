@@ -31,4 +31,8 @@ public class Player extends Game {
     public void setMarker(char marker) {
         this.marker = marker;
     }
+
+    public boolean isStartingPlayer() {
+        return startingPlayer;
+    }
 }
