@@ -100,9 +100,10 @@ public class Game {
                 System.exit(0);
             }
         }
-
+        System.out.println(player.getMarker());             // TODO remove
         if (checkValidMove(row - 1, col - 1)) {         //user input will not be 0
-           markersArray[row][col] = player.getMarker();
+           markersArray[row - 1][col - 1] = player.getMarker();
+           System.out.println("markerat med ett " + player.getMarker() +" " +row + " " + col);                                                         //TODO remove trouble shooting
         }
         else {
             System.out.println("Rutan upptagen");

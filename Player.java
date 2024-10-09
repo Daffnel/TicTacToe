@@ -12,6 +12,8 @@ public class Player extends Game {
         this.marker = marker;
     }
 
+    public Player(){}
+
     public void setWinnings(int winnings) {
         this.winnings = winnings;
     }
