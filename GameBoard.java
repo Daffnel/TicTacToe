@@ -52,6 +52,15 @@ private int noInRow = 3;                                                //Simpel
 
     }
 
+    public void printScoreBoard(Game game){
+
+        clearScreen();
+        System.out.println("*** SCOREBOARD ********");
+        System.out.println("** " + game.player1.getName() + " " + game.player1.getWinnings() + " Vinster" + " ** ");
+        System.out.println("** " + game.player2.getName() + " " + game.player2.getWinnings() + " Vinster"+ "  **" );
+        System.out.println("***********************");
+    }
+
     /**
      * simple and easy routine to clear the terminal window
      */
