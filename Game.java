@@ -36,7 +36,7 @@ public class Game {
     public boolean checkValidMove(int row, int col) {
 
         //make sure row and col is in limits
-        if ((row > markersArray.length || row < 1) || (col < 0 || col > markersArray[0].length)) {   // [0] for column
+        if ((row > markersArray.length || row < 0) || (col < 0 || col > markersArray[0].length)) {   // [0] for column
             System.out.println("fel värde på rad eller kolumn, försök igen");
             return false;
         }
@@ -78,20 +78,19 @@ public class Game {
     }
 
 
-
     public void makeMove(Player player, Game game) {               //TODO Fortsätt men denna Torsdag
 
         Scanner sc = new Scanner(System.in);
 
         boolean attempt = true;
 
-       // Check if user input i a valid int
+        // Check if user input i a valid int
         while (attempt) {
             try {
                 System.out.println("ange vilken rad:");
-                this.row = sc.nextInt();
+                this.row = (sc.nextInt() - 1);                  //user input will not 0
                 System.out.println("ange vilken kolumn:");
-                this.col = sc.nextInt();
+                this.col = (sc.nextInt() - 1);
                 attempt = false;
             } catch (InputMismatchException e) {
                 sc.nextLine();                          // clear the wrong line
@@ -100,10 +99,10 @@ public class Game {
                 System.exit(0);
             }
         }
-        System.out.println(player.getMarker());             // TODO remove
-        if (checkValidMove(row - 1, col - 1)) {         //user input will not be 0
-           markersArray[row - 1][col - 1] = player.getMarker();
-           System.out.println("markerat med ett " + player.getMarker() +" " +row + " " + col);                                                         //TODO remove trouble shooting
+
+        if (checkValidMove(row, col)) {         //user input will not be 0
+            markersArray[row][col] = player.getMarker();
+            System.out.println("markerat med ett " + player.getMarker() + " " + row + " " + col);                                                         //TODO remove trouble shooting
         }
         else {
             System.out.println("Rutan upptagen");

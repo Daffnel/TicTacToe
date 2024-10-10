@@ -24,34 +24,32 @@ public class Main {
     }
             public static void gameLopp(Game game){             //TODO fixa detta på torsdag
 
-/*
-                Player secondPl = new Player();
-                Player firstPl = new Player();
-
-             if(game.setFirstPlayer() == game.player1){
-                 firstPl = game.player1;
-                 secondPl = game.player2;
-             }
-             else if(game.setFirstPlayer() == game.player2){
-                  secondPl = game.player1;
-                 firstPl = game.player2;
-             }*/
 
              boolean spela = true;
              while(spela){
 
-                    //first players turn
-                    game.gameBoard.clearScreen();
-                    game.gameBoard.printBoard();
+
+                 //First player
+                 game.gameBoard.printBoard();
                    System.out.println(game.player1.getName());
                    game.makeMove(game.player1,game);
 
+                   if(game.gameBoard.winner(game.player1)){
+                       System.out.println(game.player1.getName() + "har vunnit!!");
+                       game.player1.setWinnings(1 + game.player1.getWinnings());
+                   }
+
 
                     //Second player turn
-                    game.gameBoard.clearScreen();
+                    //game.gameBoard.clearScreen();
                     game.gameBoard.printBoard();
-                   System.out.println(game.player2.getName());
-                   game.makeMove(game.player2,game);
+                    System.out.println(game.player2.getName());
+                    game.makeMove(game.player2,game);
+
+                 if(game.gameBoard.winner(game.player2)){
+                     System.out.println(game.player2.getName() + "har vunnit!!");
+                     //System.out.print(game.gameBoard.winner()+"\n");
+                 }
 
 
 
