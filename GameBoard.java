@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class GameBoard extends Game{
 
 private char[][] markers = new char[3][3];
-private int noInRow = 3;                                                //Simpel version "tre i rad"
+                                              //Simpel version "tre i rad"
 public GameBoard(char[][] markers){
     super();
     this.markers = markers;
@@ -20,7 +20,7 @@ public GameBoard(char[][] markers){
     System.out.println("    ---+---+---");
     System.out.println("3   " + markers[2][0] + "  | " + markers[2][1] + " | " + markers[2][2]);
     System.out.println("    -----------");
-    System.out.println("     a   b   c");
+    System.out.println("     1   2   3");
 }
 
     public boolean winner(Player player) {
@@ -41,10 +41,35 @@ public GameBoard(char[][] markers){
 
     }
 
+    //method to check is full
 
+    public boolean boardFull() {
+        for (int i = 0; i < markers.length;i++)
+            for (int j = 0; j < markers.length; j++) {
+                if (markers[i][j] == ' ')
+                    return false;
+                }
+        return true;
+    }
+
+        //Simple method to clean the terminal window
+
+    public void clearTerminal(){
+        for(int i = 0; i < 80; i++)
+            System.out.println();
+    }
+
+    public void  printScoreBoard(Player pl1, Player pl2){
+
+        System.out.println("*** SCOREBOARD **");
+        System.out.println(" " + pl1.getName() + "       " + pl1.getWinnings());
+        System.out.println(" " + pl2.getName() + "       " + pl2.getWinnings());
+        System.out.println("******************");
 
     }
 
+
+}
 
 
 

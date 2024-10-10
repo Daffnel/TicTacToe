@@ -77,7 +77,15 @@ public class Game {
 
     }
 
+    public void playersTurn(Player player,Game game){
 
+        System.out.println(player.getName() +  "s tur");
+        makeMove(player, game);
+
+        //check if move is a winning move or the board is full
+
+
+    }
     public void makeMove(Player player, Game game) {               //TODO Fortsätt men denna Torsdag
 
         Scanner sc = new Scanner(System.in);
@@ -100,13 +108,13 @@ public class Game {
             }
         }
 
+
         if (checkValidMove(row, col)) {         //user input will not be 0
             markersArray[row][col] = player.getMarker();
-            System.out.println("markerat med ett " + player.getMarker() + " " + row + " " + col);                                                         //TODO remove trouble shooting
         }
         else {
-            System.out.println("Rutan upptagen");
-
+            System.out.println("Rutan upptagen eller felaktig data. försök igen");
+            makeMove(player, game);
         }
     }
 }
