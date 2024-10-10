@@ -3,21 +3,17 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        //initialize and launch the game
-        Scanner sc = new Scanner(System.in);
+        GameMenu.ticTacToeMenu();
 
-        System.out.println("**** Tre-i-Rad ****");
-
-        System.out.print("vad heter spelar nr1 ");
-        String pl1 = sc.nextLine();
-
-        System.out.print("vad heter spelar nr2 ");
-        String pl2 = sc.nextLine();
-
-        Game game = new Game(pl1,pl2);          //new game and board fill the array with ' '
-        game.clearMarkers();
-
-
+        /*Game g1 = new Game("hasse", "ludde");
+3
+       *//* for(int i = 0; i < 3;i++)
+            for(int j = 0; j < 3; j++) {
+                g1.markersArray[i][j] = ' ';
+            }
+*//*
+       // g1.gameBoard.clearMarkers();
+        g1.gameBoard.printBoard();*/
 
     }
 

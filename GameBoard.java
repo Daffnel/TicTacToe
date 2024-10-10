@@ -29,11 +29,15 @@ public GameBoard(char[][] markers){
         for (int i = 0; i < markers.length; i++)
             if ((markers[i][0]) == player.getMarker() && markers[i][1] == player.getMarker() && markers[i][2] == player.getMarker() ||
                     (markers[0][i] == player.getMarker() && markers[1][i] == player.getMarker()) && markers[2][i] == player.getMarker()) {
+
+                player.setWinnings(player.getWinnings()+ 1);
                 return true; // winning row or column
             }
         //diagonals
         if ((markers[0][0]) == player.getMarker() && markers[1][1] == player.getMarker() && markers[2][2] == player.getMarker() ||
                 (markers[0][2] == player.getMarker() && markers[1][1] == player.getMarker()) && markers[2][0] == player.getMarker()) {
+
+            player.setWinnings(player.getWinnings()+ 1);
             return true; // winning on a diagonal
         }
 
@@ -41,7 +45,7 @@ public GameBoard(char[][] markers){
 
     }
 
-    //method to check is full
+    //method to check is board is full no winner
 
     public boolean boardFull() {
         for (int i = 0; i < markers.length;i++)

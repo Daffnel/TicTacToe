@@ -50,9 +50,9 @@ public class Game {
      * Reset and clears the array holding markers position
      */
     public void clearMarkers() {
-        for (int i = 0; i < markersArray.length; i++)
-            for (int j = 0; j < markersArray.length; j++) {
-                markersArray[i][j] = ' ';
+        for (int i = 0; i < 3; i++)
+            for (int j = 0; j < 3; j++) {
+                markersArray[i][j] = 'B';
             }
     }
 
@@ -109,12 +109,19 @@ public class Game {
         }
 
 
-        if (checkValidMove(row, col)) {         //user input will not be 0
+        if (checkValidMove(row, col)) {
             markersArray[row][col] = player.getMarker();
         }
         else {
             System.out.println("Rutan upptagen eller felaktig data. försök igen");
             makeMove(player, game);
         }
+        //check if move is a winning move
+       /* if(gameBoard.winner(player)){
+            System.out.println("***" + player.getName() + "har vunnit ***");
+            player.setWinnings(player.getWinnings()+1);
+        } else if (gameBoard.boardFull()) {             //or the board is full without  any winner
+            System.out.println("Brädan full igen vinnare");
+        }*/
     }
 }
