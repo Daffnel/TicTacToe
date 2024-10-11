@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class GameMenu  {
+public class GameMenu {
 
     public static void ticTacToeMenu() {
 
@@ -13,19 +13,22 @@ public class GameMenu  {
             System.out.println("** Tre-I-Rad");
             System.out.println("1. Starta ett nytt spel, 2 personer");
             System.out.println("2. Spela mot datorn");
-            System.out.println("3. Avsluta");
+            System.out.println("3. Spela Misere (variant av Tre-i-rad där det gäller att 'förlora'");
+            System.out.println("4. Avsluta");
 
             int val = sc.nextInt();
 
             switch (val) {
                 case 1:
-                    gameLoop(startNewGame(false));
-
+                    playTicTacHumans();
                     break;
                 case 2:
-                    gameLoop(startNewGame(true));
+                    PlayTicTacComputer();
                     break;
                 case 3:
+                    playMisere();
+                    break;
+                case 4:
                     exit = true;
                     System.out.println("Avslutar, tack och hej");
                     break;
@@ -73,80 +76,41 @@ public class GameMenu  {
 
         }
 
-
     }
 
+    public static void playMisere() {
 
-    /*
-     * Handles every move of the players. Changes the order of the players after each round.
-     * Also handles if a player is computer controlled
-     *
-     *  can be broken down into different methods, not done due to lack of time :-(
-     */
-    public static void gameLoop(Game game) {
+        System.out.println("Misere eller 'Fällan'  är en ovanlig variant av spelet 'Tre-i-rad', där spelarnas" + " huvuduppgift inte är att vinna, utan att undvika att vinna. ");
 
-        Scanner sc = new Scanner(System.in);
-        int roundNr = 0;                            //keep track of rounds played, player1 plays odd, player 2 plays even
+        Misere msGame = new Misere();
+        Game game = startNewGame(false);
 
-        while (true) {
-
-            game.clearMarkers();
-            System.out.println("Startar ett nytt spel");
-            game.gameBoard.printBoard();
-
-            if (roundNr > 0) {                                        //quit game upon users request
-                System.out.print("vill du fortsätta spela j/n ");
-                String str = sc.nextLine();
-                if (str.equalsIgnoreCase("n"))
-                    break;
-            }
-            //
-            while (true) {
-                if (roundNr % 2 == 0) {                              //player1 plays odd, player 2 plays even
-                    //player 1 turn. Make a move check if it is winning or even
-                    System.out.println(game.player1.getName() + " din tur");
-                    game.makeMove(game.player1);
-                    game.gameBoard.printBoard();
-                    roundNr++;
-
-                    if (game.gameBoard.winner(game.player1)) {
-                        System.out.println("vi har en vinnare!! Grattis " + game.player1.getName());
-                        game.gameBoard.printScoreBoard(game.player1, game.player2);
-                        break;
-                    } else if (game.gameBoard.boardFull()) {
-                        System.out.println("Brädet fullt ingen vinnare");
-                        break;
-                    }
-                } else {
-                    //player 2 turn. Make a move check if it is winning or even
-                    System.out.println(game.player2.getName() + " din tur");
-                    if (game.player2.isComputer()) {                             //if player 2 is a computer player run computerPlays()
-                        game.computerPlays(game.player2);
-                    } else if (!game.player2.isComputer()) {
-                        game.makeMove(game.player2);
-                    }
-
-                    //game.gameBoard.clearTerminal();               //Todo remove just for testing purpose
-                    game.gameBoard.printBoard();
-                    roundNr++;
-
-                    if (game.gameBoard.winner(game.player2)) {
-                        System.out.println("vi har en vinnare!! Grattis " + game.player2.getName());
-                        game.gameBoard.printScoreBoard(game.player1, game.player2);
-                        break;
-                    } else if (game.gameBoard.boardFull()) {
-                        System.out.println("Brädet fullt ingen vinnare");
-                        break;
-                    }
-
-                }
-
-            }
-        }
-
+        msGame.play(game);
     }
+
+    public static void playTicTacHumans() {
+
+        System.out.println("Klassisk tre i rad");
+
+        TicTac ticTac = new TicTac();
+        Game game2 = startNewGame(false);
+
+        ticTac.play(game2);
+    }
+public static void PlayTicTacComputer(){
+
+        System.out.println("En Hård match i Tre-i-rad mot superhjärnan Hactar");
+
+        TicTacComputer ticTacComp = new TicTacComputer();
+        Game game3 = startNewGame(true);
+
+        ticTacComp.play(game3);
 
 }
+
+}
+
+
 
 
 
