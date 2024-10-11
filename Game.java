@@ -52,7 +52,7 @@ public class Game {
     public void clearMarkers() {
         for (int i = 0; i < 3; i++)
             for (int j = 0; j < 3; j++) {
-                markersArray[i][j] = 'B';
+                markersArray[i][j] = ' ';
             }
     }
 
@@ -77,16 +77,9 @@ public class Game {
 
     }
 
-    public void playersTurn(Player player,Game game){
-
-        System.out.println(player.getName() +  "s tur");
-        makeMove(player, game);
-
-        //check if move is a winning move or the board is full
 
 
-    }
-    public void makeMove(Player player, Game game) {               //TODO Fortsätt men denna Torsdag
+    public void makeMove(Player player, Game game) {
 
         Scanner sc = new Scanner(System.in);
 
@@ -108,20 +101,12 @@ public class Game {
             }
         }
 
-
         if (checkValidMove(row, col)) {
             markersArray[row][col] = player.getMarker();
-        }
-        else {
+        } else {
             System.out.println("Rutan upptagen eller felaktig data. försök igen");
             makeMove(player, game);
         }
-        //check if move is a winning move
-       /* if(gameBoard.winner(player)){
-            System.out.println("***" + player.getName() + "har vunnit ***");
-            player.setWinnings(player.getWinnings()+1);
-        } else if (gameBoard.boardFull()) {             //or the board is full without  any winner
-            System.out.println("Brädan full igen vinnare");
-        }*/
+
     }
 }

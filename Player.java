@@ -18,6 +18,7 @@ public class Player extends Game {
         this.winnings = winnings;
     }
 
+
     public String getName() {
         return name;
     }

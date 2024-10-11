@@ -1,88 +1,114 @@
 import java.util.Scanner;
 
-public class GameMenu extends Game{
-   public GameMenu() {
-   super();
-   }
+public class GameMenu extends Game {
 
-   public static void ticTacToeMenu() {
-      Scanner sc = new Scanner(System.in);
-
-      Boolean exit = false;
-
-      while (!exit) {
-
-         System.out.println("** Tre-I-Rad");
-         System.out.println("1. Starta ett nytt spel, 2 personer");
-         System.out.println("2. Spela mot datorn");
-         System.out.println("3. Avsluta");
-
-         int val = sc.nextInt();
-
-         switch (val) {
-            case 1:
-               startNewGame();
-               break;
-            case 2:
-               // newGameComputer();
-               break;
-            case 3:
-               exit = true;
-               System.out.println("Avslutar, tack och hej");
-               break;
-            default:
-               System.out.println("ogiltigt val, försök igen.");
-         }
-        //sc.close();
-      }
+    public static void ticTacToeMenu() {
 
 
-   }
-   public static void startNewGame(){
+        Scanner sc = new Scanner(System.in);
+        Boolean exit = false;
 
-      Scanner sc = new Scanner(System.in);
+        while (!exit) {
+
+            System.out.println("** Tre-I-Rad");
+            System.out.println("1. Starta ett nytt spel, 2 personer");
+            System.out.println("2. Spela mot datorn");
+            System.out.println("3. Avsluta");
+
+            int val = sc.nextInt();
+
+            switch (val) {
+                case 1:
+                    gameLoop(startNewGame());
+
+                    break;
+                case 2:
+                    // newGameComputer();
+                    break;
+                case 3:
+                    exit = true;
+                    System.out.println("Avslutar, tack och hej");
+                    break;
+                default:
+                    System.out.println("ogiltigt val, försök igen.");
+            }
+            //sc.close();
+        }
 
 
-      System.out.print("Vad heter spelar no 1: ");
-       String pl1 = sc.nextLine();
+    }
 
-      System.out.print("vad heter spelare no 2: ");
-      String pl2 = sc.nextLine();
+    /**
+     * Starts upp a new game of classic 3X3 Tic-tac-toe.
+     * method returns a game object. which includes player names and a new game board
+     *
+     * @return  Game object
+     */
+    public  static Game startNewGame() {
 
-      Game game = new Game(pl1, pl2);   //Setup a new game and player object
+        Scanner sc = new Scanner(System.in);
 
-      //method for reset the array not working quick and easy fix
-      for(int i = 0; i < game.markersArray.length; i++)
-         for(int j = 0; j < game.markersArray.length; j++)
-            game.markersArray[i][j] = ' ';
+        System.out.print("Vad heter spelar no 1: ");
+        String pl1 = sc.nextLine();
 
-      game.gameBoard.printBoard();
+        System.out.print("vad heter spelare no 2: ");
+        String pl2 = sc.nextLine();
 
-      boolean apa = true;
+        //Setup and return  new game and player object
 
-      while(apa) {
-         //player 1 turn
-         System.out.println(game.player1.getName() + " din tur");
-         game.makeMove(game.player1, game);
-         game.gameBoard.printBoard();
+        return new Game(pl1, pl2);
+    }
 
-         if(game.gameBoard.winner(game.player1)) {
-            System.out.println("vi har en vinnare!! Grattis " + game.player1.getName());
-            break;
-         }
+    /**
+     * Main loop that handles new move, check for win, draw etc.
+     *
+     * @param game object of type Game
+     */
+    public static void gameLoop(Game game)
 
-         //player 2 turn
-         System.out.println(game.player2.getName() + " din tur");
-         //game.gameBoard.printBoard();
-         game.makeMove(game.player2, game);
-         game.gameBoard.printBoard();
+    {
+        boolean running = true;
+        int roundNr.
 
-         if(game.gameBoard.winner(game.player1)) {
-            System.out.println("vi har en vinnare!! Grattis " + game.player2.getName());
-            break;
-         }
-      }
-   }
+        while (running) {
+
+            game.clearMarkers();
+            System.out.println("Startar ett nytt spel");
+            game.gameBoard.printBoard();
+
+
+            while (true) {
+                //player 1 turn. Make a move check if it is winning or even
+                System.out.println(game.player1.getName() + " din tur");
+                game.makeMove(game.player1, game);
+                game.gameBoard.printBoard();
+
+                if (game.gameBoard.winner(game.player1)) {
+                    System.out.println("vi har en vinnare!! Grattis " + game.player1.getName());
+                    game.gameBoard.printScoreBoard(game.player1, game.player2);
+                    break;
+                } else if (game.gameBoard.boardFull()) {
+                    System.out.println("Brädet fullt ingen vinnare");
+                    break;
+                }
+
+                //player 2 turn. Make a move check if it is winning or even
+                System.out.println(game.player2.getName() + " din tur");
+                game.makeMove(game.player2, game);
+                game.gameBoard.printBoard();
+
+                if (game.gameBoard.winner(game.player1)) {
+                    System.out.println("vi har en vinnare!! Grattis " + game.player2.getName());
+                    game.gameBoard.printScoreBoard(game.player1, game.player2);
+                    break;
+                } else if (game.gameBoard.boardFull()) {
+                    System.out.println("Brädet fullt ingen vinnare");
+                    break;
+                }
+            }
+        }
+
+    }
 }
 
 
