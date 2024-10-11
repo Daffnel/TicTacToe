@@ -61,6 +61,9 @@ public class Game {
      * Moves a game piece. Also check that the move is valid.
      * If one player is a computer, a separate method is used.
      *
+     * A simpler method to be a number from 1 to 9.
+     * Made with rows and columns if you want to expand the game for a larger board
+     *
      * @param player
      * @param game
      */

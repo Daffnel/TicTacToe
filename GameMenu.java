@@ -40,9 +40,9 @@ public class GameMenu extends Game {
 
     /**
      * Starts upp a new game of classic 3X3 Tic-tac-toe.
-     * method returns a game object. which includes player names and a new game board
+     * method returns a game object. which includes object of player names and object of board
      *
-     * @return  Game object
+     * @return  game an object of Game Class
      */
     public static Game startNewGame(boolean computerPlayer) {
 
@@ -78,11 +78,17 @@ public class GameMenu extends Game {
     }
 
 
-
+    /*
+     * Handles every move of the players. Changes the order of the players after each round.
+     * Also handles if a player is computer controlled
+     *
+     *  can be broken down into different methods, not done due to lack of time :-(
+     */
     public static void gameLoop(Game game)
 
     {
 
+        Scanner sc = new Scanner(System.in);
         int roundNr=0;                            //keep track of rounds played, player1 plays odd, player 2 plays even
 
         while (true) {
@@ -91,7 +97,13 @@ public class GameMenu extends Game {
             System.out.println("Startar ett nytt spel");
             game.gameBoard.printBoard();
 
-            // can be broken down into different methods, not done due to lack of time :-(
+            if(roundNr> 0) {                                        //quit game upon users request
+                System.out.print("vill du fortsätta spela j/n ");
+                String str = sc.nextLine();
+                    if(str.equalsIgnoreCase("n"))
+                        break;
+            }
+            //
             while (true) {
                     if(roundNr % 2 == 0) {                              //player1 plays odd, player 2 plays even
                         //player 1 turn. Make a move check if it is winning or even
@@ -118,6 +130,7 @@ public class GameMenu extends Game {
                             game.makeMove(game.player2, game);
                         }
 
+                      //game.gameBoard.clearTerminal();               //Todo just for testing purpose
                         game.gameBoard.printBoard();
                         roundNr++;
 

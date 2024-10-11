@@ -65,7 +65,7 @@ public boolean winner(Player player) {
         return true;
     }
 
-        //Simple method to clean the terminal window
+
 
     public void clearTerminal(){
         for(int i = 0; i < 80; i++)
@@ -88,7 +88,10 @@ public boolean winner(Player player) {
     }
 
 
-}
+    }
+
+
+
 
 
 
