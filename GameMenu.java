@@ -19,11 +19,11 @@ public class GameMenu extends Game {
 
             switch (val) {
                 case 1:
-                    gameLoop(startNewGame());
+                    gameLoop(startNewGame(false));
 
                     break;
                 case 2:
-                    // newGameComputer();
+                    gameLoop(startNewGame(true));
                     break;
                 case 3:
                     exit = true;
@@ -44,31 +44,41 @@ public class GameMenu extends Game {
      *
      * @return  Game object
      */
-    public  static Game startNewGame() {
+    public static Game startNewGame(boolean computerPlayer) {
 
         Scanner sc = new Scanner(System.in);
+        String pl1, pl2;
+        if (!computerPlayer) {
+            System.out.print("Vad heter spelar no 1: ");
+            pl1 = sc.nextLine();
 
-        System.out.print("Vad heter spelar no 1: ");
-        String pl1 = sc.nextLine();
+            System.out.print("vad heter spelare no 2: ");
+            pl2 = sc.nextLine();
 
-        System.out.print("vad heter spelare no 2: ");
-        String pl2 = sc.nextLine();
+            return new Game(pl1, pl2,false);             //Setup and return  new game and player object
 
-        //Setup and return  new game and player object
+        } else {
 
-        return new Game(pl1, pl2);
+            System.out.print("Vad heter spelar no 1: ");
+            pl1 = sc.nextLine();
+
+            pl2 = "Hactar";
+            System.out.print("Du kommer nu att möta den berömda datorspelarn " + pl2);
+
+            return new Game(pl1, pl2,true);              //Setup and return  new game and player object
+        }
+
+
+
     }
 
-    /**
-     * Main loop that handles new move, check for win, draw etc.
-     *
-     * @param game object of type Game
-     */
+
+
     public static void gameLoop(Game game)
 
     {
         boolean running = true;
-        int roundNr.
+        int roundNr=0;                            //keep track of rounds played, player1 plays odd, player 2 plays even
 
         while (running) {
 
@@ -76,36 +86,48 @@ public class GameMenu extends Game {
             System.out.println("Startar ett nytt spel");
             game.gameBoard.printBoard();
 
-
+            // can be broken down into different methods, not done due to lack of time :-(
             while (true) {
-                //player 1 turn. Make a move check if it is winning or even
-                System.out.println(game.player1.getName() + " din tur");
-                game.makeMove(game.player1, game);
-                game.gameBoard.printBoard();
+                    if(roundNr % 2 == 0) {                              //player1 plays odd, player 2 plays even
+                        //player 1 turn. Make a move check if it is winning or even
+                        System.out.println(game.player1.getName() + " din tur");
+                        game.makeMove(game.player1, game);
+                        game.gameBoard.printBoard();
+                        roundNr ++;
 
-                if (game.gameBoard.winner(game.player1)) {
-                    System.out.println("vi har en vinnare!! Grattis " + game.player1.getName());
-                    game.gameBoard.printScoreBoard(game.player1, game.player2);
-                    break;
-                } else if (game.gameBoard.boardFull()) {
-                    System.out.println("Brädet fullt ingen vinnare");
-                    break;
-                }
+                        if (game.gameBoard.winner(game.player1)) {
+                            System.out.println("vi har en vinnare!! Grattis " + game.player1.getName());
+                            game.gameBoard.printScoreBoard(game.player1, game.player2);
+                            break;
+                        } else if (game.gameBoard.boardFull()) {
+                            System.out.println("Brädet fullt ingen vinnare");
+                            break;
+                        }
+                    }
+                    else {
+                        //player 2 turn. Make a move check if it is winning or even
+                        System.out.println(game.player2.getName() + " din tur");
+                        if (game.player2.isComputer())                              //if player 2 is a computer player run computerPlays()
+                            game.computerPlays(game, game.player2);
+                        else {
+                            game.makeMove(game.player2, game);
+                            game.gameBoard.printBoard();
+                            roundNr++;
 
-                //player 2 turn. Make a move check if it is winning or even
-                System.out.println(game.player2.getName() + " din tur");
-                game.makeMove(game.player2, game);
-                game.gameBoard.printBoard();
+                            if (game.gameBoard.winner(game.player2)) {
+                                System.out.println("vi har en vinnare!! Grattis " + game.player2.getName());
+                                game.gameBoard.printScoreBoard(game.player1, game.player2);
+                                break;
+                            } else if (game.gameBoard.boardFull()) {
+                                System.out.println("Brädet fullt ingen vinnare");
+                                break;
+                            }
 
-                if (game.gameBoard.winner(game.player1)) {
-                    System.out.println("vi har en vinnare!! Grattis " + game.player2.getName());
-                    game.gameBoard.printScoreBoard(game.player1, game.player2);
-                    break;
-                } else if (game.gameBoard.boardFull()) {
-                    System.out.println("Brädet fullt ingen vinnare");
-                    break;
-                }
+                        }
+
+                    }
             }
+
         }
 
     }

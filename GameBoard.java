@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class GameBoard extends Game{
 
 private char[][] markers = new char[3][3];
-                                              //Simpel version "tre i rad"
+
 public GameBoard(char[][] markers){
     super();
     this.markers = markers;
@@ -23,7 +23,13 @@ public GameBoard(char[][] markers){
     System.out.println("     1   2   3");
 }
 
-    public boolean winner(Player player) {
+    /**
+     * Running through the markers array and checking if there are any winning patterns
+     *
+      * @param player objet of Player class
+     * @return true if a winning combination is found
+     */
+public boolean winner(Player player) {
 
         //check rows and column for a win
         for (int i = 0; i < markers.length; i++)
@@ -45,8 +51,12 @@ public GameBoard(char[][] markers){
 
     }
 
-    //method to check is board is full no winner
 
+    /**
+     * Checks if the board is full, which means the game is a draw
+     *
+     * @return true if board is full
+     */
     public boolean boardFull() {
         for (int i = 0; i < markers.length;i++)
             for (int j = 0; j < markers.length; j++) {
@@ -63,6 +73,12 @@ public GameBoard(char[][] markers){
             System.out.println();
     }
 
+    /**
+     * Prints the scoreboard
+     *
+     * @param pl1 player objet for player 1
+     * @param pl2 player object for player 2
+     */
     public void  printScoreBoard(Player pl1, Player pl2){
 
         System.out.println("*** SCOREBOARD **");

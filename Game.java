@@ -18,11 +18,11 @@ public class Game {
      * @param pl1 name of player no 1
      * @param pl2 name of player no 2
      */
-    public Game(String pl1, String pl2) {
+    public Game(String pl1, String pl2, boolean computer) {
         //this.gameBoard = new GameBoard(markersArray);
         this.gameBoard = new GameBoard(markersArray);
-        this.player1 = new Player(pl1, 'X');             //player1 default marker 'X'
-        this.player2 = new Player(pl2, 'O');
+        this.player1 = new Player(pl1, 'X',false);             //player1 default marker 'X' and never plays as computer
+        this.player2 = new Player(pl2, 'O',computer);
     }
 
 
@@ -56,34 +56,21 @@ public class Game {
             }
     }
 
+
     /**
-     * make a random selection of which player who will start
+     * Moves a game piece. Also check that the move is valid.
+     * If one player is a computer, a separate method is used.
+     *
+     * @param player
+     * @param game
+     * @param computerPlayer set to true if player is a computer
      */
-    public Player setFirstPlayer() {         //(Player pl1, Player pl2){
-
-        Random rand = new Random();
-
-        int tal = (rand.nextInt(2) + 1);
-
-        if (tal == 1) {
-            player1.setStartingPlayer(true);
-            System.out.println(player1.getName() + " Startar med markören " + player1.getMarker());
-            return player1;
-        } else {
-            player2.setStartingPlayer(true);
-            System.out.println(player2.getName() + " Startar med markören " + player2.getMarker());
-            return player2;
-        }
-
-    }
-
-
-
     public void makeMove(Player player, Game game) {
 
         Scanner sc = new Scanner(System.in);
-
         boolean attempt = true;
+
+
 
         // Check if user input i a valid int
         while (attempt) {
@@ -107,6 +94,23 @@ public class Game {
             System.out.println("Rutan upptagen eller felaktig data. försök igen");
             makeMove(player, game);
         }
+
+    }
+
+    /**
+     * not the smartest player. puts pieces out randomly.
+     *
+     */
+    public void computerPlays(Game game, Player player) {
+
+        Random rand = new Random();
+        int row = rand.nextInt(3);
+        int col = rand.nextInt(3);
+
+        if(checkValidMove(row,col))
+            markersArray[row][col] = player.getMarker();
+        else
+            computerPlays(game,player);
 
     }
 }
