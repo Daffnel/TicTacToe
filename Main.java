@@ -6,7 +6,7 @@ public class Main {
 
 
 
-
+        // start the magnificent game of Tic tac toe
         GameMenu.ticTacToeMenu();
 
 

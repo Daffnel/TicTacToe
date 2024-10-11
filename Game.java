@@ -64,10 +64,9 @@ public class Game {
      * A simpler method to be a number from 1 to 9.
      * Made with rows and columns if you want to expand the game for a larger board
      *
-     * @param player
-     * @param game
+     * @param player object of class Player
      */
-    public void makeMove(Player player, Game game) {
+    public void makeMove(Player player) {
 
         Scanner sc = new Scanner(System.in);
         boolean attempt = true;
@@ -94,7 +93,7 @@ public class Game {
             markersArray[row][col] = player.getMarker();
         } else {
             System.out.println("Rutan upptagen eller felaktig data. försök igen");
-            makeMove(player, game);
+            makeMove(player);
         }
 
     }
@@ -103,10 +102,10 @@ public class Game {
      * not the smartest player. puts pieces out randomly.
      *
      */
-    public void computerPlays(Game game, Player player) {
+    public void computerPlays(Player player) {
 
         int row, col;
-        boolean run = true;
+
 
         Random rand = new Random();
 
