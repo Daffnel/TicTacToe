@@ -66,12 +66,6 @@ public boolean winner(Player player) {
     }
 
 
-
-    public void clearTerminal(){
-        for(int i = 0; i < 80; i++)
-            System.out.println();
-    }
-
     /**
      * Prints the scoreboard
      *

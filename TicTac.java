@@ -40,11 +40,7 @@ public class TicTac extends Game {
                 } else {
                     //player 2 turn. Make a move check if it is winning or even
                     System.out.println(game.player2.getName() + " din tur");
-                    if (game.player2.isComputer()) {                             //if player 2 is a computer player run computerPlays()
-                        game.computerPlays(game.player2);
-                    } else if (!game.player2.isComputer()) {
-                        game.makeMove(game.player2);
-                    }
+                    game.makeMove(game.player2);
 
                     //game.gameBoard.clearTerminal();               //Todo remove just for testing purpose
                     game.gameBoard.printBoard();

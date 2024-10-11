@@ -28,6 +28,7 @@ public class Game {
 
     /**
      * Check that the box is not already occupied by a marker
+     * or rows and columns is out of limits
      *
      * @param row desired row
      * @param col desired column
@@ -40,10 +41,8 @@ public class Game {
             System.out.println("fel värde på rad eller kolumn, försök igen");
             return false;
         }
-        if (markersArray[row][col] == ' ')
-            return true;
-        else
-            return false;
+        if (markersArray[row][col] == ' ') return true;
+        else return false;
     }
 
     /**
@@ -58,8 +57,9 @@ public class Game {
 
 
     /*
-     * Moves a game piece. Also check that the move is valid.
-     * If one player is a computer, a separate method is used.
+     * Moves a game piece. Also checks that input values is ok
+     * and that the move is a valid move.
+     *
      *
      * A simpler method to be a number from 1 to 9.
      * Made with rows and columns if you want to expand the game for a larger board
@@ -70,7 +70,6 @@ public class Game {
 
         Scanner sc = new Scanner(System.in);
         boolean attempt = true;
-
 
 
         // Check if user input i a valid int
@@ -98,9 +97,8 @@ public class Game {
 
     }
 
-    /**
-     * not the smartest player. puts pieces out randomly.
-     *
+    /* The Computer method, not the smartest player!
+     * just puts out his pieces randomly wherever there is a free space.
      */
     public void computerPlays(Player player) {
 
@@ -110,18 +108,16 @@ public class Game {
         Random rand = new Random();
 
         // Loop until random row and column is valid
-        while(true){
+        while (true) {
             row = rand.nextInt(3);
             col = rand.nextInt(3);
 
-            if(checkValidMove(row,col)){
+            if (checkValidMove(row, col)) {
                 markersArray[row][col] = player.getMarker();
                 break;
             }
 
         }
-
-
 
 
     }

@@ -7,7 +7,7 @@ public class TicTacComputer extends Game{
         super();
     }
 
-    @Override
+
     public void play(Game game){
     Scanner sc = new Scanner(System.in);
     int roundNr = 0;                            //keep track of rounds played, player1 plays odd, player 2 plays even

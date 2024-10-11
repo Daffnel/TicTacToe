@@ -97,7 +97,8 @@ public class GameMenu {
 
         ticTac.play(game2);
     }
-public static void PlayTicTacComputer(){
+
+    public static void PlayTicTacComputer() {
 
         System.out.println("En Hård match i Tre-i-rad mot superhjärnan Hactar");
 
@@ -106,7 +107,7 @@ public static void PlayTicTacComputer(){
 
         ticTacComp.play(game3);
 
-}
+    }
 
 }
 
