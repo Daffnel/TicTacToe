@@ -36,7 +36,7 @@ public class Game {
     public boolean checkValidMove(int row, int col) {
 
         //make sure row and col is in limits
-        if ((row > markersArray.length || row < 0) || (col < 0 || col > markersArray[0].length)) {   // [0] for column
+        if ((row > markersArray.length || row < 0) || (col < 0 || col > markersArray[0].length - 1)) {   // [0] for column
             System.out.println("fel värde på rad eller kolumn, försök igen");
             return false;
         }
@@ -57,14 +57,14 @@ public class Game {
     }
 
 
-    /**
+    /*
      * Moves a game piece. Also check that the move is valid.
      * If one player is a computer, a separate method is used.
      *
      * A simpler method to be a number from 1 to 9.
      * Made with rows and columns if you want to expand the game for a larger board
      *
-     * @param player object of class Player
+     *
      */
     public void makeMove(Player player) {
 
