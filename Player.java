@@ -5,12 +5,17 @@ public class Player extends Game {
     private char marker;
     private int winnings;
 
-    private boolean isComputer = false;
+    private boolean isComputer;
 
-    public Player(String name, char marker, boolean isComputer){
+    public Player(String name, char marker){
         this.name = name;
         this.marker = marker;
-        this.isComputer = isComputer;
+
+        this.isComputer = false;
+    }
+
+    public void setComputer(boolean computer) {
+        isComputer = computer;
     }
 
     public boolean isComputer() {

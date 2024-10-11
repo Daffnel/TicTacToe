@@ -6,7 +6,7 @@ public class GameMenu extends Game {
 
 
         Scanner sc = new Scanner(System.in);
-        Boolean exit = false;
+        boolean exit = false;
 
         while (!exit) {
 
@@ -55,7 +55,7 @@ public class GameMenu extends Game {
             System.out.print("vad heter spelare no 2: ");
             pl2 = sc.nextLine();
 
-            return new Game(pl1, pl2,false);             //Setup and return  new game and player object
+            return new Game(pl1, pl2);             //Setup and return  new game and player object
 
         } else {
 
@@ -63,9 +63,14 @@ public class GameMenu extends Game {
             pl1 = sc.nextLine();
 
             pl2 = "Hactar";
-            System.out.print("Du kommer nu att möta den berömda datorspelarn " + pl2);
+            System.out.println("Du kommer nu att möta den berömda datorspelarn " + pl2);
 
-            return new Game(pl1, pl2,true);              //Setup and return  new game and player object
+            Game g1 = new Game(pl1, pl2);    //Setup and return  new game and player object
+
+            g1.player2.setComputer(true);
+
+            return g1;
+
         }
 
 
@@ -77,10 +82,10 @@ public class GameMenu extends Game {
     public static void gameLoop(Game game)
 
     {
-        boolean running = true;
+
         int roundNr=0;                            //keep track of rounds played, player1 plays odd, player 2 plays even
 
-        while (running) {
+        while (true) {
 
             game.clearMarkers();
             System.out.println("Startar ett nytt spel");
@@ -107,12 +112,14 @@ public class GameMenu extends Game {
                     else {
                         //player 2 turn. Make a move check if it is winning or even
                         System.out.println(game.player2.getName() + " din tur");
-                        if (game.player2.isComputer())                              //if player 2 is a computer player run computerPlays()
+                        if (game.player2.isComputer()) {                             //if player 2 is a computer player run computerPlays()
                             game.computerPlays(game, game.player2);
-                        else {
+                        } else if (!game.player2.isComputer()) {
                             game.makeMove(game.player2, game);
-                            game.gameBoard.printBoard();
-                            roundNr++;
+                        }
+
+                        game.gameBoard.printBoard();
+                        roundNr++;
 
                             if (game.gameBoard.winner(game.player2)) {
                                 System.out.println("vi har en vinnare!! Grattis " + game.player2.getName());
@@ -131,7 +138,7 @@ public class GameMenu extends Game {
         }
 
     }
-}
+
 
 
 

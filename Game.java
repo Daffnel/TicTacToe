@@ -18,11 +18,11 @@ public class Game {
      * @param pl1 name of player no 1
      * @param pl2 name of player no 2
      */
-    public Game(String pl1, String pl2, boolean computer) {
+    public Game(String pl1, String pl2) {
         //this.gameBoard = new GameBoard(markersArray);
         this.gameBoard = new GameBoard(markersArray);
-        this.player1 = new Player(pl1, 'X',false);             //player1 default marker 'X' and never plays as computer
-        this.player2 = new Player(pl2, 'O',computer);
+        this.player1 = new Player(pl1, 'X');             //player1 default marker 'X' and never plays as computer
+        this.player2 = new Player(pl2, 'O');
     }
 
 
@@ -63,7 +63,6 @@ public class Game {
      *
      * @param player
      * @param game
-     * @param computerPlayer set to true if player is a computer
      */
     public void makeMove(Player player, Game game) {
 
@@ -103,14 +102,25 @@ public class Game {
      */
     public void computerPlays(Game game, Player player) {
 
-        Random rand = new Random();
-        int row = rand.nextInt(3);
-        int col = rand.nextInt(3);
+        int row, col;
+        boolean run = true;
 
-        if(checkValidMove(row,col))
-            markersArray[row][col] = player.getMarker();
-        else
-            computerPlays(game,player);
+        Random rand = new Random();
+
+        // Loop until random row and column is valid
+        while(true){
+            row = rand.nextInt(3);
+            col = rand.nextInt(3);
+
+            if(checkValidMove(row,col)){
+                markersArray[row][col] = player.getMarker();
+                break;
+            }
+
+        }
+
+
+
 
     }
 }
